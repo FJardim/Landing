@@ -1,31 +1,20 @@
 import React from 'react'
 
-export default function Servicios({title}) {
-    const textData = [
-        { title: 'Consultas y asesoramiento'},
-        { title: 'Autorizaciones'},
-        { title: 'Consultas y asesoramiento'},
-        { title: 'Autorizaciones'},
-        { title: 'Consultas y asesoramiento'},
-        { title: 'Autorizaciones'},
-        { title: 'Consultas y asesoramiento'},
-        { title: 'Autorizaciones'},
-        { title: 'Consultas y asesoramiento'},
-        { title: 'Autorizaciones'},
-        { title: 'Consultas y asesoramiento'},
-        { title: 'Autorizaciones'},
-      ];
+export default function Servicios() {
+  const documents = ['Compraventa','Afectación y Desafectación al Régimen de Protección de la Vivienda', 'Contrato de locación' ,'Poderes', 'Donación', 'Permuta', 'Constitución y Cancelación de Usufructo', 'Constitución y Cancelación de Hipoteca', 'Actas de Constatación, Manifestación y Notificaciones','Testamentos', 'Constituciones y Modificaciones de Sociedades','Trámites Societarios',]
   return (
-    <div className='container w-full h-full bg-white'>
-        <p className=' text-5xl font-bold text-center'>{title}</p>
-        <div className="w-full md:w-1/2 p-20">
-          {textData.map((item, index) => (
-            <React.Fragment key={index}>
-              <h2>{item.title}</h2>
-              
-            </React.Fragment>
-          ))}
-</div>
+    <div className='flex justify-around'>
+    <ul>
+      {documents.map((documents, index) => (
+        <li key={index}>{documents}</li>
+      ))}
+    </ul>
+    <ul>
+      {documents.map((documents, index) => (
+        <li key={index}>{documents}</li>
+      ))}
+    </ul>
     </div>
+    
   )
 }

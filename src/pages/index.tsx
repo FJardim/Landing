@@ -12,7 +12,7 @@ export default function Home() {
       <NavBar />
       <Nosotros title={"Acerca de Nosotros"} subtitle={"Fundada hace mas de 40 años"} parraph={"Brindamos un asesoramiento notarial de forma integral, acompañando a nuestros clientes a lo largo de todo el proceso.  El objetivo principal es ayudar tanto a empresas como a particulares, ofreciendo un servicio transparente, cercano, eficiente y rápido acorde a sus necesidades particulares."}/>
       <Especialidades title={"Nuestras Especialidades"}/>
-      <Servicios title={"Nuestros Servicios"}/>
+      <Servicios/>
     </div>
   );
 }
