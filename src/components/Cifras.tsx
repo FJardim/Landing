@@ -9,8 +9,8 @@ export default function Cifras({title, parraph}) {
 <p className='text-2xl text-gray-400'>{parraph}</p>
         </div>
         <div className='flex justify-around'>
-        <Cards title={'3.271.185'} text={'usuarios ya han confiado en nosotros'}/>
-        <Cards title={'110'} text={'modelos de cartas y contratos en Argentina '}/>
+        <Cards title={'3.271.185'} text={'Usuarios ya han confiado en nosotros'}/>
+        <Cards title={'110'} text={'Modelos de cartas y contratos en Argentina '}/>
         <Cards title={'26'} text={'Disponibles en 26 Paises'}/>
         </div>
 

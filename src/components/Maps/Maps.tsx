@@ -7,13 +7,16 @@ export default function Maps() {
     lng: -58.3816
   };
 
+  const apiKey = 'AIzaSyDkAJA-uOdmLgb0WSrMePZp4pvA4s6fT7w';
+
   return (
-    <div style={{ height: '100vh', width: '100%' }} className=''>
+    <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
         defaultCenter={defaultCenter}
         defaultZoom={10}
+        bootstrapURLKeys={{ key: 'AIzaSyDkAJA-uOdmLgb0WSrMePZp4pvA4s6fT7w' }}
       >
-        </GoogleMapReact>
+      </GoogleMapReact>
     </div>
   );
 }
