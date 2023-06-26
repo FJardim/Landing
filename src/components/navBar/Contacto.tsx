@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function Contacto({ title }: { title: string }) {
   return (
     <div>
