@@ -20,7 +20,7 @@ export default function Home() {
       <Especialidades title={"Nuestras Especialidades"}/>
       <Servicios title={'Nuestros Servicios'}/>
       <MapContainer/>
-      <Formulario title={'Dejanos tu mensaje'}/>
+      <Formulario title={'Dejanos tu mensaje'} parraph={'Nos Contactaremos a la Brevedad'}/>
     </div>
   );
 }
