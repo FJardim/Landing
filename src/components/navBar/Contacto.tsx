@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Contacto({title}) {
+export default function Contacto({title, parraph}) {
   return (
    <div>
     <p className='flex justify-center font-bold text-5xl'>{title}</p>
+    <p className='flex justify-center font-normal text-2xl m-4'>{parraph}</p>
      <div className="flex items-center justify-center p-12">
     <div className="mx-auto w-full max-w-[1000px]">
       <form method="POST">
@@ -14,7 +15,7 @@ export default function Contacto({title}) {
           </div>
           <div>
             <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Apellido:</label>
-            <input type="email" id="email" name="email" className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" placeholder="Ingrese su Apellido" />
+            <input type="name" id="name" name="email" className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" placeholder="Ingrese su Apellido" />
           </div>
           <div>
             <label htmlFor="phone" className="block text-gray-700 font-bold mb-2">Teléfono:</label>
@@ -26,7 +27,7 @@ export default function Contacto({title}) {
           </div>
           <div className="col-span-2">
             <label htmlFor="city" className="block text-gray-700 font-bold mb-2">Email:</label>
-            <input type="text" id="city" name="city" className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" placeholder="Ingrese tu Email" />
+            <input type="email" id="email" name="city" className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500" placeholder="Ingrese tu Email" />
           </div>
           <div className="col-span-2">
             <label htmlFor="comments" className="block text-gray-700 font-bold mb-2">Comentarios:</label>
