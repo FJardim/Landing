@@ -27,7 +27,7 @@ export const NavBar = () => {
           <li className="mx-4 text-white">Contacto</li>
           <li className="mx-4 text-white">Marketplace Abogados</li>
         </ul>
-        <button className="hidden md:block text-white mx-8 bg-main px-2 py-1 rounded-2xl">
+        <button className="hidden md:block text-white mx-8 bg-main hover:text-black px-2 py-1 rounded-2xl">
           Call: +SOY EL NUMERO DE ADRIAN
         </button>
       </div>
@@ -41,7 +41,7 @@ export const NavBar = () => {
             notariales-legales, destacándose como un equipo serio y comprometido
             con sus clientes.
           </p>
-          <button className="text-white bg-main px-8 py-2 rounded-xl">
+          <button className="text-white bg-main hover:text-black px-8 py-2 rounded-xl">
             CONTACTANOS
           </button>
         </div>

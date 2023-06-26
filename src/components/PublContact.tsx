@@ -23,7 +23,7 @@ export const PublContact = () => {
           conocimientos y experiencia buscamos la excelencia en cada caso que se
           nos presenta.
         </p>
-        <button className="text-white bg-main px-8 py-2 rounded-xl">
+        <button className="text-white bg-main hover:text-black px-8 py-2 rounded-xl">
           CONTACTANOS
         </button>
       </div>

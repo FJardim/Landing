@@ -12,19 +12,25 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <NavBar />
-      <Nosotros
-        title={"Acerca de Nosotros"}
-        subtitle={"Fundada hace más de 40 años"}
-        parraph={
-          "Brindamos un asesoramiento notarial de forma integral, acompañando a nuestros clientes a lo largo de todo el proceso. El objetivo principal es ayudar tanto a empresas como a particulares, ofreciendo un servicio transparente, cercano, eficiente y rápido acorde a sus necesidades particulares."
-        }
-      />
-      <Especialidades title={"Nuestras Especialidades"} />
-      <Servicios title={"Nuestros Servicios"} />
-      <MapContainer />
-      <Formulario title={"Dejanos tu mensaje"} />
+      <div className="p-12 bg-slate-200">
+        <Nosotros
+          title={"Acerca de Nosotros"}
+          subtitle={"Fundada hace más de 40 años"}
+          parraph={
+            "Brindamos un asesoramiento notarial de forma integral, acompañando a nuestros clientes a lo largo de todo el proceso. El objetivo principal es ayudar tanto a empresas como a particulares, ofreciendo un servicio transparente, cercano, eficiente y rápido acorde a sus necesidades particulares."
+          }
+        />
+        <Especialidades title={"Nuestras Especialidades"} />
+      </div>
+      <div className=" bg-slate-200">
+        <Servicios title={"Nuestros Servicios"} />
+        <MapContainer />
+      </div>
+      <div className="p-12">
+        <Formulario title={"Dejanos tu mensaje"} />
+      </div>
       <PublContact />
       <Footer />
     </div>
