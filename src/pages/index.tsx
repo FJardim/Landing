@@ -14,9 +14,6 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <div className="p-12">otros componentes</div>
-      <PublContact />
-      <Footer />
       <Nosotros
         title={"Acerca de Nosotros"}
         subtitle={"Fundada hace más de 40 años"}
@@ -28,6 +25,8 @@ export default function Home() {
       <Servicios title={"Nuestros Servicios"} />
       <MapContainer />
       <Formulario title={"Dejanos tu mensaje"} />
+      <PublContact />
+      <Footer />
     </div>
   );
 }
