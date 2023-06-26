@@ -42,7 +42,7 @@ export default function Especialidades({ title }: { title: string }) {
   return (
     <div className="container bg-white w-full h-full flex flex-wrap">
       <div className="w-full md:w-1/2 p-6 md:px-20">
-        <h1 className="text-5xl font-bold mb-8">{title}</h1>
+        <h1 className="lg:text-5xl text-2xl font-bold mb-8">{title}</h1>
         <div className="bg-main pb-6 pl-6">
           <Image src={imagen} alt="imagen" width={550} height={400} />
         </div>
@@ -51,8 +51,12 @@ export default function Especialidades({ title }: { title: string }) {
         <div className="w-full md:w-1/2 p-2 ">
           {textData.map((item, index) => (
             <React.Fragment key={index}>
-              <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-              <p className="text-base font-light mb-4">{item.content}</p>
+              <h2 className="lg:text-2xl text-4xl font-bold mb-4">
+                {item.title}
+              </h2>
+              <p className="lg:text-base text-2xl font-light mb-4">
+                {item.content}
+              </p>
             </React.Fragment>
           ))}
         </div>

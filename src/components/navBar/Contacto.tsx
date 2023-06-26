@@ -4,10 +4,10 @@ export default function Contacto({ title }: { title: string }) {
   return (
     <div>
       <p className="flex justify-center font-bold text-5xl">{title}</p>
-      <div className="flex items-center justify-center p-12">
+      <div className="flex items-center justify-center lg:p-12 mt-6">
         <div className="mx-auto w-full max-w-[1000px]">
           <form method="POST">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label
                   htmlFor="name"
@@ -68,7 +68,7 @@ export default function Contacto({ title }: { title: string }) {
                   placeholder="Ingrese su Whatsapp"
                 />
               </div>
-              <div className="col-span-2">
+              <div>
                 <label
                   htmlFor="city"
                   className="block text-gray-700 font-bold mb-2"
@@ -83,7 +83,7 @@ export default function Contacto({ title }: { title: string }) {
                   placeholder="Ingrese tu Email"
                 />
               </div>
-              <div className="col-span-2">
+              <div>
                 <label
                   htmlFor="comments"
                   className="block text-gray-700 font-bold mb-2"
@@ -99,10 +99,7 @@ export default function Contacto({ title }: { title: string }) {
                 />
               </div>
             </div>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-main hover:text-black text-white font-semibold rounded"
-            >
+            <button className="px-4 py-2 bg-main hover:text-black text-white font-semibold rounded">
               Enviar Mensaje
             </button>
           </form>

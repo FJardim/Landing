@@ -16,14 +16,14 @@ export default function Servicios({ title }: { title: string }) {
     "Trámites Societarios",
   ];
   return (
-    <div className="p-14">
+    <div className="lg:p-14">
       <div className="bg-white border-2 border-black p-4">
-        <p className="justify-center flex text-5xl font-semibold mb-6 mt-6">
+        <p className="lg:justify-center text-center flex text-5xl font-semibold mb-6 mt-6">
           {title}
         </p>
         <div className="flex justify-around">
           <ul className="text-xl m-7 list-disc">
-            <p className="mb-6 font-semibold text-lg">Profesionales</p>
+            <p className="mb-6 font-semibold text-lg ">Profesionales</p>
             {documents.map((document, index) => (
               <li key={index} className="text-base">
                 {document}

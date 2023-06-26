@@ -7,7 +7,7 @@ export default function MapContainer() {
         Nuestas Oficinas
       </p>
       <div className="Container w-full flex justify-center">
-        <div className="w-full p-20">
+        <div className="w-full lg:p-20">
           <Maps />
         </div>
       </div>
