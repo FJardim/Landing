@@ -1,19 +1,19 @@
 import { Inter } from "next/font/google";
-import { NavBar } from "../components/navBar/NavBar";
 import { Footer } from "../components/footer/Footer";
 import { PublContact } from "../components/PublContact";
-import Nosotros from "../components/navBar/Nosotros";
-import Especialidades from "../components/navBar/Especialidades";
+import Nosotros from "../components/body/Nosotros";
+import Especialidades from "../components/body/Especialidades";
 import Servicios from "../components/Servicios";
 import MapContainer from "../components/Maps/MapContainer";
-import Formulario from "../components/navBar/Contacto";
+import Formulario from "../components/body/Contacto";
+import { Header } from "../components/navBar/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <div className="">
-      <NavBar />
+      <Header />
       <div className="p-12 bg-slate-200">
         <Nosotros
           title={"Acerca de Nosotros"}
