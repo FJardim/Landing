@@ -1,7 +1,10 @@
 import React from 'react'
 import Cards from './Card/Cards'
 
-export default function Cifras({title, parraph}) {
+export default function Cifras({title, parraph}: {
+  title: string;
+  parraph: string;
+}) {
   return (
     <div className='Container bg-white p-20'>
         <div className=' text-center space-y-6 mb-10'>
