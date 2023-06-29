@@ -3,7 +3,7 @@ import React from "react";
 import logo from "../../assets/image/EscribaniaD.png";
 import portada from "../../assets/image/imgED.jpg";
 import { Context } from "./Context";
-import { NavBar } from "./NavBar";
+import { NavBar } from "./navBar";
 
 export const Header = () => {
   return (

@@ -5,11 +5,23 @@ import Servicios from "../components/Servicios";
 import { PublContact } from "../components/PublContact";
 import { Footer } from "../components/footer/Footer";
 import { NavBar } from "../components/navBar/NavBar";
+import portada from "../assets/image/portadaDos.jpg";
 
 export default function Documents() {
   return (
     <div>
-      <NavBar />
+      <div
+        className=""
+        style={{
+          backgroundImage: `url(${portada.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          height: "130px",
+        }}
+      >
+        <NavBar />
+      </div>
       <Pasos />
       <Cifras
         title={"¡TE AYUDAMOS A COMPLETAR TUS DOCUMENTOS!"}
