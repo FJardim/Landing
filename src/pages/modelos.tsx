@@ -1,10 +1,11 @@
 import React from "react";
+import Link from "next/link";
 import { NavBar } from "../components/navBar/NavBar";
 import portada from "../assets/image/portadaDos.jpg";
 
 export default function Modelos() {
   return (
-    <div className="bg-slate-200">
+    <div className="bg-[#D9D9D9]">
       <div
         className=""
         style={{
@@ -43,9 +44,11 @@ export default function Modelos() {
                   <p className="text-xl font-semibold">
                     Recursos humanos, derecho laboral
                   </p>
-                  <p className="text-cyan-600 text-xl">
-                    Pacto de No Concurrencia Laboral
-                  </p>
+                  <Link href={"/pacto"}>
+                    <p className="text-cyan-600 text-xl cursor-pointer">
+                      Pacto de No Concurrencia Laboral
+                    </p>
+                  </Link>
                 </div>
               </div>
               <div className="m-4 pl-4 border-l-2 border-gray">
