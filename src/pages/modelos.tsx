@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { NavBar } from "../components/navBar/NavBar";
+import { NavBar } from "../components/navBar/navBar";
 import portada from "../assets/image/portadaDos.jpg";
 
 export default function Modelos() {

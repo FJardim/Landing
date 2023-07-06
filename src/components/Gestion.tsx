@@ -1,7 +1,13 @@
-import React from 'react';
-import { SlDocs } from 'react-icons/sl';
+import React from "react";
+import { SlDocs } from "react-icons/sl";
 
-export default function Gestion({ title, parraph }) {
+export default function Gestion({
+  title,
+  parraph,
+}: {
+  title: string;
+  parraph: string;
+}) {
   return (
     <div className="w-full h-auto p-20 flex justify-center items-center">
       <div className="max-w-md text-justify">
@@ -11,7 +17,6 @@ export default function Gestion({ title, parraph }) {
       <div className="ml-40">
         <SlDocs size={120} className="text-main" />
       </div>
-     
     </div>
   );
 }

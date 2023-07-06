@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { NavBar } from "../components/navBar/NavBar";
+import { NavBar } from "../components/navBar/navBar";
 import portada from "../assets/image/portadaDos.jpg";
 import { BiTimeFive } from "react-icons/bi";
 import { GrDocumentText } from "react-icons/gr";
