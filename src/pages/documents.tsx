@@ -32,10 +32,13 @@ export default function Documents() {
         <NavBar />
       </div>
       <Pasos />
-      <Cifras
-        title={"¡TE AYUDAMOS A COMPLETAR TUS DOCUMENTOS!"}
-        parraph={"Un equipo de abogados y juristas redactar los modelos "}
-      />
+      <div>
+        <Cifras
+          title={"¡TE AYUDAMOS A COMPLETAR TUS DOCUMENTOS!"}
+          parraph={"Un equipo de abogados y juristas redactar los modelos "}
+        />
+      </div>
+
       <Modal visible={modalVisible} />
 
       <Servicios title={"Nuestros Servicios"} />

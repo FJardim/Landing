@@ -10,11 +10,11 @@ export default function Cifras({
 }) {
   return (
     <div className="Container bg-white p-20">
-      <div className=" text-center space-y-6 mb-10">
+      <div className="text-center space-y-6 mb-10">
         <p className="text-4xl">{title}</p>
         <p className="text-2xl text-gray-400">{parraph}</p>
       </div>
-      <div className="flex justify-around">
+      <div className="flex flex-col md:flex-row md:justify-around items-center space-y-4">
         <Cards
           title={"3.271.185"}
           text={"Usuarios ya han confiado en nosotros"}

@@ -51,12 +51,8 @@ export default function Especialidades({ title }: { title: string }) {
         <div className="w-full md:w-1/2 p-2 ">
           {textData.map((item, index) => (
             <React.Fragment key={index}>
-              <h2 className="lg:text-2xl text-4xl font-bold mb-4">
-                {item.title}
-              </h2>
-              <p className="lg:text-base text-2xl font-light mb-4">
-                {item.content}
-              </p>
+              <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
+              <p className="text-base font-light mb-4">{item.content}</p>
             </React.Fragment>
           ))}
         </div>

@@ -21,16 +21,16 @@ export default function Servicios({ title }: { title: string }) {
         <p className="lg:justify-center text-center flex text-5xl font-semibold mb-6 mt-6">
           {title}
         </p>
-        <div className="flex justify-around">
-          <ul className="text-xl m-7 list-disc">
-            <p className="mb-6 font-semibold text-lg ">Profesionales</p>
+        <div className="flex flex-col md:flex-row lg:p-6">
+          <ul className="text-xl m-7 list-disc md:w-1/2">
+            <p className="mb-6 font-semibold text-lg">Profesionales</p>
             {documents.map((document, index) => (
               <li key={index} className="text-base">
                 {document}
               </li>
             ))}
           </ul>
-          <ul className="text-xl m-7 list-disc">
+          <ul className="text-xl m-7 list-disc md:w-1/2">
             <p className="mb-6 font-semibold text-lg">Particulares</p>
             {documents.map((document, index) => (
               <li key={index} className="text-base">
