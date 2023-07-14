@@ -1,4 +1,5 @@
 import { Contrato } from "@/components/pages/contrato";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import React from "react";
 import { MdArrowForwardIos } from "react-icons/md";
@@ -11,14 +12,12 @@ type FirmaDigitalProps = {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => void;
-  onSiguiente: () => void;
   onAnterior: () => void;
 };
 
 export default function FirmaDigital({
   contratoInfo,
   onChange,
-  onSiguiente,
   onAnterior,
 }: FirmaDigitalProps) {
   const empleadoSignRef = useRef<SignatureCanvas | null>(null);
@@ -82,7 +81,7 @@ export default function FirmaDigital({
           velocityFilterWeight={1}
           dotSize={1}
           onEnd={() => {
-            const firma2 = empleadoSignRef.current?.toDataURL();
+            const firma2 = representanteSignRef.current?.toDataURL();
             const event2 = {
               target: { name: "firmaDos", value: firma2 },
             } as React.ChangeEvent<HTMLInputElement>;
@@ -107,12 +106,14 @@ export default function FirmaDigital({
           <MdArrowForwardIos className="m-auto ml-auto" />
           Paso anterior
         </button>
-        <button
-          className="flex bg-main text-black hover:text-white p-2 rounded-xl"
-          onClick={onSiguiente}
-        >
-          Siguiente paso <MdArrowForwardIos className="m-auto ml-auto" />
-        </button>
+        <Link href={"/pago"}>
+          <button
+            className="flex bg-main text-black hover:text-white p-2 rounded-xl"
+            onClick={onAnterior}
+          >
+            Siguiente paso <MdArrowForwardIos className="m-auto ml-auto" />
+          </button>
+        </Link>
       </div>
 
       <p className="mt-4 text-sm underline">Modificar modelo</p>

@@ -9,11 +9,9 @@ type DocumentsPactoLaboralProps = {
 export default function DocumentsPactoLaboral({
   contratoInfo,
 }: DocumentsPactoLaboralProps) {
-  console.log(contratoInfo.firmaUno);
-  console.log(contratoInfo.firmaDos);
   return (
     <div>
-      <p className="p-12 text-xl text-justify">
+      <div className="p-12 text-xl text-justify">
         <span className="font-semibold">
           CONTRATO DE PACTO DE NO CONCURRENCIA LABORAL
         </span>
@@ -122,7 +120,7 @@ export default function DocumentsPactoLaboral({
         </b>{" "}
         Representante Legal Empleado <br />
         <br />
-        <b>
+        <div className="flex">
           {contratoInfo.firmaUno && (
             <Image
               src={contratoInfo.firmaUno}
@@ -139,9 +137,12 @@ export default function DocumentsPactoLaboral({
               height={150}
             />
           )}
-          {/* <Image src={contratoInfo.firmaDos} alt="firmaDos" /> */}
-        </b>
-      </p>
+        </div>
+        <div className="flex justify-between p-14">
+          <p>{contratoInfo.nombreEmpleado || "[Nombre del empleado]"}</p>
+          <p>{contratoInfo.nombreEmpresa || "[Nombre de la Empresa]"}</p>
+        </div>
+      </div>
     </div>
   );
 }

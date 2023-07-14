@@ -19,7 +19,6 @@ export default function Pacto() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          height: "130px",
         }}
       >
         <NavBar />

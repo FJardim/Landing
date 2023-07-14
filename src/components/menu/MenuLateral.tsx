@@ -12,6 +12,8 @@ import PagoFechaDePeriodo from "./PagoFechaDePeriodo";
 import MontoPorcentajePagar from "./MontoPorcentajePagar";
 import JurisdiccionTribunales from "./JurisdiccionTribunales";
 import FirmaDigital from "./FirmaDigital";
+import Pago from "@/components/pages/pago";
+// import { DocumentoListo } from "../documents/DocumentoListo";
 
 type MenuLateralProps = {
   contratoInfo: Contrato;
@@ -149,7 +151,6 @@ export default function MenuLateral({
         <FirmaDigital
           contratoInfo={contratoInfo}
           onChange={handleDataChange}
-          onSiguiente={handleSiguiente}
           onAnterior={handleAnterior}
         />
       );
