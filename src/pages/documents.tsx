@@ -18,6 +18,11 @@ export default function Documents() {
     setModalVisible(router.query.pay_completed === "true");
   }, [router.query.pay_completed]);
 
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <div>
       <div
@@ -39,7 +44,7 @@ export default function Documents() {
         />
       </div>
 
-      <Modal visible={modalVisible} />
+      <Modal visible={modalVisible} onClose={closeModal} />
 
       <Servicios title={"Nuestros Servicios"} />
       <PublContact />

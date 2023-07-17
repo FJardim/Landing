@@ -24,13 +24,13 @@ export default function Pacto() {
         <NavBar />
       </div>
       <div className="container px-6 pt-6">
-        <div className="flex justify-start space-x-20 text-xl font-medium">
-          <p className="ml-24">Profesiones</p>
+        <div className="flex flex-col items-center text-xl font-medium space-y-4 md:flex-row md:justify-start md:space-y-0 md:space-x-20">
+          <p className="lg:ml-24">Profesiones</p>
           <p>Recursos Humanos, derecho laboral</p>
           <p>Pacto de no Concurrencia Laboral</p>
         </div>
         <div className="flex mt-6 justify-around">
-          <div className="text-cyan-600 text-2xl mt-6 mr-28">
+          <div className="text-cyan-600 text-2xl lg:mt-6 lg:mr-28">
             Pacto de No Concurreira Laboral
           </div>
           <Link href={"/contrato"}>
@@ -41,25 +41,28 @@ export default function Pacto() {
           <div></div>
         </div>
 
-        <div className="flex justify-start mt-6">
-          <div className="flex mt-6">
-            <BiTimeFive className="ml-24" style={{ fontSize: "38px" }} />
+        <div className="flex flex-col items-center mt-6 md:flex-row md:justify-start">
+          <div className="flex flex-col items-center md:flex-row md:items-center md:space-x-8">
+            <BiTimeFive className="lg:ml-24" style={{ fontSize: "38px" }} />
             <div className="text-lg ml-2">
               <p className="font-bold">Última revisión</p>
               <p className="text-sm text-gray-600">24/01/2023</p>
             </div>
-            <GrDocumentText className="ml-8" style={{ fontSize: "38px" }} />
+            <GrDocumentText className="lg:ml-8" style={{ fontSize: "38px" }} />
             <div className="text-lg">
               <p className="font-bold">Última revisión</p>
               <p className="text-sm text-gray-600">Word y PDF</p>
             </div>
-            <LiaArrowsAltVSolid className="ml-8" style={{ fontSize: "38px" }} />
+            <LiaArrowsAltVSolid
+              className="lg:ml-8"
+              style={{ fontSize: "38px" }}
+            />
             <div className="text-lg">
               <p className="font-bold">Tamaño</p>
               <p className="text-sm text-gray-600">11 a 17 páginas</p>
             </div>
           </div>
-          <div className="ml-auto mr-24">
+          <div className="lg:ml-auto lg:mr-24">
             <Image src={documents} alt="imagen" width={200} height={100} />
           </div>
         </div>

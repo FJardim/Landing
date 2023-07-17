@@ -81,12 +81,12 @@ export default function Contratos() {
         >
           <NavBar />
         </div>
-        <div className="text-cyan-600 text-2xl mt-6 mr-28 ml-12">
+        <div className="text-cyan-600 text-2xl lg:mt-6 lg:mr-28 lg:ml-12 m-4">
           Pacto de No Concurrencia Laboral
         </div>
       </>
-      <div className="flex p-10">
-        <div className="w-1/2 pl-4 pr-4">
+      <div className="lg:flex lg:p-10">
+        <div className="lg:w-1/2 lg:pl-4 lg:pr-4 p-2">
           <MenuLateral
             contratoInfo={contratoInfo}
             onContratoInfoChange={setContratoInfo}

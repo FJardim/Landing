@@ -18,26 +18,26 @@ export default function Modelos() {
       >
         <NavBar />
       </div>
-      <div className="p-16">
-        <p className="text-cyan-600 text-center text-2xl">
+      <div className="lg:p-16 p-4">
+        <p className="text-cyan-600 text-center lg:text-2xl text-3xl font-semibold p-4">
           Modelos - Documentos
         </p>
-        <p className="lg:p-4 p-2 text-center lg:text-justify">
+        <p className="lg:p-4 text-justify lg:text-justify text-2xl mb-6 p-8">
           La página web te ofrece diferentes modelos de cartas, de contratos y
           de documentos legales y administrativos para profesionales y para
           particulares. Simplemente completas un formulario y el documento se va
           redactando automáticamente, frente a tus ojos. Luego lo recibís en
           formato Word para poder modificar lo que quieras.
         </p>
-        <div className="bg-white p-20">
+        <div className="bg-white lg:p-20 p-4">
           <div className="flex items-center">
             <div className="h-7 w-7 rounded-full bg-main"></div>
             <div className="ml-4">
               <p className="text-xl font-semibold">Profesionales</p>
             </div>
           </div>
-          <div className="m-4 pl-4 border-l-2 border-gray">
-            <div className="m-4 pl-4">
+          <div className="lg:m-4 lg:pl-4 border-l-2 border-gray">
+            <div className="lg:m-4 lg:pl-4 pl-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
@@ -51,8 +51,8 @@ export default function Modelos() {
                   </Link>
                 </div>
               </div>
-              <div className="m-4 pl-4 border-l-2 border-gray">
-                <div className="flex items-center">
+              <div className="lg:m-4 lg:pl-4 m-2 border-l-2 border-gray">
+                <div className="flex items-center ml-2">
                   <div className="h-7 w-7 rounded-full bg-main"></div>
                   <div className="ml-4">
                     <p className="text-xl font-semibold">
@@ -60,14 +60,14 @@ export default function Modelos() {
                     </p>
                   </div>
                 </div>
-                <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+                <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                   <p>Contratos de Trabajo Remoto o Teletrabajo</p>
                   <p>Contrato de Trabajo Permanente</p>
                   <p>Contrato de Trabajo a Plazo Fijo</p>
                 </div>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
@@ -76,7 +76,7 @@ export default function Modelos() {
                   </p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Acta de Órgano de Administración de S.A.S. </p>
                 <p>Declaración Jurada de Persona Expuesta Políticamente</p>
                 <p>Acuerdo de Accionistas</p>
@@ -107,14 +107,14 @@ export default function Modelos() {
                 <p>Poder General Amplio</p>
               </div>
             </div>
-            <div className="m-4 pl-4 ">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
                   <p className="text-xl font-semibold">Creación de empresa</p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Contrato de Compraventa de Acciones</p>
                 <p>Contrato Constitutivo de S.R.L</p>
                 <p>Contrato de Sociedad por Acciones Simplificada</p>
@@ -143,7 +143,7 @@ export default function Modelos() {
                   </p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Autorización para el uso de imagen</p>
                 <p>Política de Privacidad para Sitio Web</p>
                 <p>Términos y Condiciones para Sitio Web</p>
@@ -156,7 +156,7 @@ export default function Modelos() {
                   <p className="text-xl font-semibold">Actividad comercial</p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Contrato de Suministro</p>
                 <p>Contrato de Agencia</p>
                 <p>Modificación de Contrato de Obra o Servicios</p>
@@ -182,7 +182,7 @@ export default function Modelos() {
                   </p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Contrato de Subalquiler de Inmueble Comercial</p>
                 <p>Contrato de Alquiler de Local según Nueva Ley</p>
                 <p>Contrato de Alquiler de Oficina según Nueva Ley</p>
@@ -195,22 +195,22 @@ export default function Modelos() {
               <p className="text-xl font-semibold">Particulares</p>
             </div>
           </div>
-          <div className="m-4 pl-4 border-l-2 border-gray">
-            <div className="m-4 pl-4">
+          <div className="lg:m-4 lg:pl-4 border-l-2 border-gray">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
                   <p className="text-xl font-semibold">Trabajo</p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>
                   Comunicación de Inasistencia al Trabajo por
                   Covid-19/Coronavirus
                 </p>
                 <p>Carta de Cesación del Descuento Sindical</p>
                 <p>Solicitud de Desafiliación Sindical</p>
-                <div className="m-4 pl-4">
+                <div className="lg:m-4 lg:pl-4 m-2">
                   <div className="flex items-center">
                     <div className="h-7 w-7 rounded-full bg-main"></div>
                     <div className="ml-4">
@@ -226,7 +226,7 @@ export default function Modelos() {
                     </p>
                   </div>
                 </div>
-                <div className="m-4 pl-4">
+                <div className="lg:m-4 lg:pl-4 m-2">
                   <div className="flex items-center">
                     <div className="h-7 w-7 rounded-full bg-main"></div>
                     <div className="ml-4">
@@ -241,7 +241,7 @@ export default function Modelos() {
                 </div>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
@@ -250,7 +250,7 @@ export default function Modelos() {
                   </p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Contrato de Locación de Cochera</p>
                 <p>
                   Notificación de Terminación de Contrato de Alquiler Continuado
@@ -281,7 +281,7 @@ export default function Modelos() {
                 <p>Contrato de Alquiler de Vivienda según Nueva Ley</p>
                 <p>Carta Oferta de Compra de Inmueble</p>
 
-                <div className="m-4 pl-4">
+                <div className="lg:m-4 lg:pl-4">
                   <div className="flex items-center">
                     <div className="h-7 w-7 rounded-full bg-main"></div>
                     <div className="ml-4">
@@ -294,7 +294,7 @@ export default function Modelos() {
                     <p>Solicitud de Autorización de Reformas en Departamento</p>
                   </div>
                 </div>
-                <div className="m-4 pl-4">
+                <div className="lg:m-4 lg:pl-4">
                   <div className="flex items-center">
                     <div className="h-7 w-7 rounded-full bg-main"></div>
                     <div className="ml-4">
@@ -303,7 +303,7 @@ export default function Modelos() {
                       </p>
                     </div>
                   </div>
-                  <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+                  <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                     <p>Notificación de Cambio de Domicilio Consorcial</p>
                     <p>
                       Solicitud de Convocatoria de Asamblea de Consorcio de
@@ -314,7 +314,7 @@ export default function Modelos() {
                 </div>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
@@ -323,7 +323,7 @@ export default function Modelos() {
                   </p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Pacto de Convivencia en Pareja Estable</p>
                 <p>Convenio de División de Herencia</p>
                 <p>Notificación de Prestación de Alimentos</p>
@@ -332,14 +332,14 @@ export default function Modelos() {
                 <p>Convenio de Responsabilidad Parental</p>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
                   <p className="text-xl font-semibold">Vida diaria</p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>
                   Intimación a Devolver Una Cosa Prestada Contrato de Donación
                 </p>
@@ -352,7 +352,7 @@ export default function Modelos() {
                 <p>de derechos sobre Datos Personales</p>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
@@ -361,13 +361,13 @@ export default function Modelos() {
                   </p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Carta a la Defensoría del Pueblo de la Nación</p>
                 <p>Solicitud de Acceso a la Información Pública</p>
                 <p>Solicitud de Vista de Expediente Administrativo</p>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
@@ -381,27 +381,27 @@ export default function Modelos() {
                 <p>Descargo por Infracción de Tránsito</p>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
                   <p className="text-xl font-semibold">Consumo</p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Carta de Rechazo de Resumen de Tarjeta de Crédito</p>
                 <p>Carta de Cancelación de Contrato de Consumo</p>
                 <p>Solicitud de Cancelación de Débito Automático</p>
               </div>
             </div>
-            <div className="m-4 pl-4">
+            <div className="lg:m-4 lg:pl-4 m-2">
               <div className="flex items-center">
                 <div className="h-7 w-7 rounded-full bg-main"></div>
                 <div className="ml-4">
                   <p className="text-xl font-semibold">Asociaciones</p>
                 </div>
               </div>
-              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray">
+              <div className="m-4 pl-4 text-gray-500 border-l-2 border-gray text-xl">
                 <p>Acuerdo de Voluntariado Social</p>
                 <p>Solicitud de Convocatoria de Asamblea de Asociación Civil</p>
                 <p>Acta Constitutiva de Asociación Civil</p>

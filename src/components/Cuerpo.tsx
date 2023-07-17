@@ -26,8 +26,8 @@ export const Cuerpo = () => {
   ];
 
   return (
-    <div className="flex pr-10 pb-10">
-      <div className="w-1/2 p-4">
+    <div className="flex lg:pr-10 pb-10">
+      <div className="w-1/2 p-4 hidden md:block">
         <p className="ml-6 text-2xl font-semibold">¿Cómo funciona?</p>
         <div className="flex flex-col p-4">
           {data.map((item, index) => (
