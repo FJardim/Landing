@@ -5,7 +5,7 @@ import logo from "../../assets/image/EscribaniaD.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
-import LoginModal from "../auth/LoginModal";
+import AuthModal from "../auth/AuthModal";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -109,7 +109,7 @@ export const NavBar = () => {
         )}
         <div className="flex">
           <button
-            className="hidden md:flex items-center text-white mx-2 bg-main hover:text-black px-4 py-1 rounded-2xl"
+            className="flex items-center text-white mx-2 bg-main hover:text-black px-4 py-1 rounded-2xl"
             onClick={handleOpenLoginModal}
           >
             <FaUserCircle className="m-1" />
@@ -118,7 +118,7 @@ export const NavBar = () => {
           {/* Call: +SOY el numero de ADRIAN */}
         </div>
       </div>
-      <LoginModal visible={modalOpen} onClose={() => setModalOpen(false)} />
+      <AuthModal visible={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 };

@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import RegistroModal from "../auth/RegistroModal";
 
-type ModalProps = {
-  visible: boolean;
-  onClose: () => void; // Agregamos la función onClose para cerrar el modal
-};
-
-export default function LoginModal({ visible, onClose }: ModalProps) {
+const LoginModalContent = ({ onRegisterPress }: { onRegisterPress: any }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [registroVisible, setRegistroVisible] = useState(false); // Estado para controlar la visibilidad del componente Registro
-
-  if (!visible) return null;
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -26,34 +18,24 @@ export default function LoginModal({ visible, onClose }: ModalProps) {
     console.log("Username:", username);
     console.log("Password:", password);
   };
-  const handleCloseModal = () => {
-    onClose?.();
+
+  // Nueva función para abrir el modal de RegistroModal
+  const handleToggleRegistro = () => {
+    setRegistroVisible(!registroVisible);
   };
-
-  //   //Registro
-  //   const handleOpenRegistro = () => {
-  //     setRegistroVisible(true);
-  //   };
-
-  //   const handleCloseRegistro = () => {
-  //     setRegistroVisible(false);
-  //   };
-  //   // Nueva función para cerrar el modal de LoginModal y abrir el modal de RegistroModal
-  //   const handleToggleRegistro = () => {
-  //     onClose?.(); // Cerrar el modal de LoginModal
-  //     setRegistroVisible(!registroVisible);
-  //   };
+  // const handleCloseModal = () => {
+  //   onclose?.();
+  // };
 
   return (
     <>
-      {/* {registroVisible && <RegistroModal onClose={handleCloseRegistro} />} */}
       <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
         <div className="w-[400px] flex flex-col">
           <div className="relative">
             <div className="bg-white rounded-xl">
               <button
                 className="absolute top-0 right-0 text-black text-xl mr-4 mt-4 hover:text-white hover:bg-blue-300 rounded-full p-2"
-                onClick={handleCloseModal}
+                // onClick={handleCloseModal}
               >
                 X
               </button>
@@ -101,7 +83,7 @@ export default function LoginModal({ visible, onClose }: ModalProps) {
                     No eres miembro todavía?
                     <p
                       className="text-blue-500 cursor-pointer hover:underline"
-                      //   onClick={handleToggleRegistro} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
+                      onClick={onRegisterPress} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
                     >
                       Registrate
                     </p>
@@ -114,4 +96,6 @@ export default function LoginModal({ visible, onClose }: ModalProps) {
       </div>
     </>
   );
-}
+};
+
+export default LoginModalContent;
