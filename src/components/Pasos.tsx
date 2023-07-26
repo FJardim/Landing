@@ -38,11 +38,13 @@ export default function Pasos() {
             icon={<SlDocs />}
           />
         </Link>
-        <CardInfo
-          title={"2. Completar el Documento"}
-          text={"Podes elegir entre los 110 modelos disponibles"}
-          icon={<PiNotePencil />}
-        />
+        <Link className="mt-4" href="/pacto">
+          <CardInfo
+            title={"2. Completar el Documento"}
+            text={"Podes elegir entre los 110 modelos disponibles"}
+            icon={<PiNotePencil />}
+          />
+        </Link>
         <CardInfo
           title={"3. Guardar e Imprimir"}
           text={"Podes elegir entre los 110 modelos disponibles"}

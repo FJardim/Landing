@@ -15,16 +15,14 @@ export default function Nosotros({
     <div className="container bg-white w-full h-full flex flex-wrap">
       <div className="w-full md:w-1/2 lg:p-20 p-10">
         <div className="mb-8">
-          <h1 className="lg:text-5xl text-5xl text-center lg:text-justify font-bold">
+          <h1 className="lg:text-5xl text-4xl text-center lg:text-justify font-bold">
             {title}
           </h1>
-          <h1 className="text-xl text-center lg:text-justify font-medium">
+          <h1 className="text-xl text-center lg:text-justify font-medium ">
             {subtitle}
           </h1>
         </div>
-        <p className="text-xl text-center lg:text-justify font-medium">
-          {parraph}
-        </p>
+        <p className=" text-justify text-base font-light">{parraph}</p>
         <button className="bg-main hover:text-black text-white font-bold py-2 px-8 rounded mt-4">
           Contáctanos
         </button>

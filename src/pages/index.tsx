@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="">
       <Header />
-      <div className="p-12 bg-slate-200">
+      <div className="lg:p-12 p-4 bg-slate-200">
         <section id="nosotros">
           <Nosotros
             title={"Acerca de Nosotros"}

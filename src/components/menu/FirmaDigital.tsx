@@ -13,11 +13,13 @@ type FirmaDigitalProps = {
       | React.ChangeEvent<HTMLSelectElement>
   ) => void;
   onAnterior: () => void;
+  onSiguiente: () => void;
 };
 
 export default function FirmaDigital({
   contratoInfo,
   onChange,
+  onSiguiente,
   onAnterior,
 }: FirmaDigitalProps) {
   const empleadoSignRef = useRef<SignatureCanvas | null>(null);
@@ -106,14 +108,12 @@ export default function FirmaDigital({
           <MdArrowForwardIos className="m-auto ml-auto" />
           Paso anterior
         </button>
-        <Link href={"/pago"}>
-          <button
-            className="flex bg-main text-black hover:text-white p-2 rounded-xl"
-            onClick={onAnterior}
-          >
-            Siguiente paso <MdArrowForwardIos className="m-auto ml-auto" />
-          </button>
-        </Link>
+        <button
+          className="flex bg-main text-black hover:text-white p-2 rounded-xl"
+          onClick={onSiguiente}
+        >
+          Siguiente paso <MdArrowForwardIos className="m-auto ml-auto" />
+        </button>
       </div>
 
       <p className="mt-4 text-sm underline">Modificar modelo</p>

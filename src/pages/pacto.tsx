@@ -29,12 +29,12 @@ export default function Pacto() {
           <p>Recursos Humanos, derecho laboral</p>
           <p>Pacto de no Concurrencia Laboral</p>
         </div>
-        <div className="flex mt-6 justify-around">
+        <div className="lg:flex mt-6 text-center lg:justify-around">
           <div className="text-cyan-600 text-2xl lg:mt-6 lg:mr-28">
             Pacto de No Concurreira Laboral
           </div>
           <Link href={"/contrato"}>
-            <button className="hidden md:block mt-6 text-white mx-8 bg-main hover:text-black px-4 py-1 rounded-2xl">
+            <button className="mt-6 text-white mx-8 bg-main hover:text-black px-4 py-1 rounded-2xl">
               Completar el modelo
             </button>
           </Link>

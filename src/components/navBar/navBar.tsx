@@ -52,10 +52,10 @@ export const NavBar = () => {
             <Link href="/#contacto">Contacto</Link>
           </li>
           <li className="text-white cursor-pointer">
-            <Link href="/#">Citas</Link>
+            <Link href="/citas">Citas</Link>
           </li>
           <li className="text-white cursor-pointer m-auto">
-            <Link href="/">
+            <Link href="/carrito">
               <AiOutlineShoppingCart />
             </Link>
           </li>
@@ -94,10 +94,10 @@ export const NavBar = () => {
                 <Link href="/#contacto">Contacto</Link>
               </li>
               <li className="lg:mx-2 border-b text-black cursor-pointer p-4">
-                <Link href="/#">Citas</Link>
+                <Link href="/citas">Citas</Link>
               </li>
               <li className="lg:mx-2 border-b text-black cursor-pointer p-4">
-                <Link href="/" className="flex">
+                <Link href="/carrito" className="flex">
                   <AiOutlineShoppingCart />
                 </Link>
               </li>

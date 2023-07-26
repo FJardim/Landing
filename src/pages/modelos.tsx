@@ -44,7 +44,7 @@ export default function Modelos() {
                   <p className="text-xl font-semibold">
                     Recursos humanos, derecho laboral
                   </p>
-                  <Link href={"/pacto"}>
+                  <Link href={"/pago"}>
                     <p className="text-cyan-600 text-xl cursor-pointer">
                       Pacto de No Concurrencia Laboral
                     </p>
