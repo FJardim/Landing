@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 type ModalProps = {
   visible: boolean;
@@ -7,32 +9,78 @@ type ModalProps = {
 
 export default function AuthModal({ visible, onClose }: ModalProps) {
   const [activeContent, setActiveContent] = useState("login");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [registroVisible, setRegistroVisible] = useState(false); // Estado para controlar la visibilidad del componente Registro
+
+  //API
+  const [formDataLogin, setFormDataLogin] = useState({
+    email: "",
+    password: "",
+  });
 
   if (!visible) return null;
 
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
-  };
+  //-----------------------------------------------
+  //Consumir API con AXIOS PARA INICIO DE SESION
+  //-----------------------------------------------
+  const url = "http://localhost:3000/auth/login";
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
+  const handleInputChangeLogin = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = event.target;
+    // console.log("Input changed:", name, value);
+    setFormDataLogin((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(formDataLogin);
   };
+  const handleLogin = async (
+    event: React.ChangeEvent<HTMLInputElement> | null = null
+  ) => {
+    if (event) {
+      event.preventDefault();
+    }
+    try {
+      const response = await axios.post(url, formDataLogin); //petion post
+      console.log("Response:", response.data);
+      return response;
+    } catch (error: any) {
+      //asignación de message
+      let errorMessage = " ";
 
-  const handleLogin = () => {
-    // Aquí puedes realizar la lógica de inicio de sesión con los valores de username y password
-    console.log("Username:", username);
-    console.log("Password:", password);
-  };
-  const handleCloseModal = () => {
-    onClose?.();
+      //verificación de status del message del error
+      // console.log(error.response);
+      if (error.response.data.message === "User is not approved.") {
+        errorMessage =
+          "Usuario no aprobado. Por favor, espera a que tu cuenta sea aprobada.";
+      } else {
+        //verificacion si es usuario ha sido approved
+        errorMessage = "Credenciales inválidas. Por favor, verifica tus datos.";
+      }
+
+      Swal.fire({
+        icon: "error",
+        title: "Error de inicio de sesión",
+        text: errorMessage,
+      });
+      // Restablecer las campos de inicio de sesión
+      setFormDataLogin((prevData) => ({
+        ...prevData,
+        password: "",
+      }));
+    }
   };
 
   // Nueva función para abrir el modal de RegistroModal
   const handleToggleRegistro = () => {
     setRegistroVisible(!registroVisible);
+  };
+  //-----------------------------------------------
+
+  //CERRAR MODAL
+  const handleCloseModal = () => {
+    onClose?.();
   };
 
   return (
@@ -62,8 +110,9 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                         id="email"
                         className="px-4 py-2 w-full border rounded-lg"
                         placeholder="Usuario"
-                        value={username}
-                        onChange={handleUsernameChange}
+                        name="email"
+                        value={formDataLogin.email}
+                        onChange={handleInputChangeLogin}
                       />
                     </div>
                     <div className="w-full mb-4">
@@ -75,13 +124,14 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                         id="password"
                         className="px-4 py-2 w-full border rounded-lg"
                         placeholder="Contraseña"
-                        value={password}
-                        onChange={handlePasswordChange}
+                        name="password"
+                        value={formDataLogin.password}
+                        onChange={handleInputChangeLogin}
                       />
                     </div>
                     <button
                       className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 w-full rounded-lg"
-                      onClick={handleLogin}
+                      onClick={() => handleLogin(null)}
                     >
                       Iniciar sesión
                     </button>
@@ -92,7 +142,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                       No eres miembro todavía?
                       <p
                         className="text-blue-500 cursor-pointer hover:underline"
-                        onClick={() => setActiveContent("register")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
+                        // onClick={() => setActiveContent("registre")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
                       >
                         Registrate
                       </p>
@@ -112,7 +162,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
               <div className="bg-white rounded-xl ">
                 <button
                   className="absolute top-0 right-0 text-black text-xl mr-4 mt-4 hover:text-white hover:bg-blue-300 rounded-full p-2"
-                  onClick={handleCloseModal}
+                  // onClick={handleCloseModal}
                 >
                   X
                 </button>
@@ -131,8 +181,8 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="email"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Email"
-                          // value={email}
-                          // onChange={handleEmailChange}
+                          // value={formDataRegistre.email}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pl-2">
@@ -144,8 +194,8 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="password"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Contraseña"
-                          value={password}
-                          onChange={handlePasswordChange}
+                          // value={formDataRegistre.password}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -157,8 +207,8 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="userName"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="UserName"
-                          value={username}
-                          onChange={handleUsernameChange}
+                          // value={formDataRegistre.email}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -170,8 +220,8 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="nombre"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Nombre"
-                          // value={nombre}
-                          // onChange={handleNombreChange}
+                          // value={formDataRegistre.name}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <div className="w-full md:w-full mb-4 md:pr-2">
@@ -183,8 +233,8 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="direccion"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Dirección"
-                          // value={direccion}
-                          // onChange={handleDireccionChange}
+                          // value={formDataRegistre.address}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -196,8 +246,8 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="telefonoLocal"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Telefono local"
-                          // value={telefono}
-                          // onChange={handleTelefonoChange}
+                          // value={formDataRegistre.phone}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -209,13 +259,13 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="telefonoMovil"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Telefono Movil"
-                          // value={telefonoMovil}
-                          // onChange={handleTelefonoMovilChange}
+                          // value={formDataRegistre.mobile_phone}
+                          // onChange={handleInputChangeRegistre}
                         />
                       </div>
                       <button
                         className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 w-full rounded-lg"
-                        onClick={handleLogin}
+                        // onClick={() => handleLogin(null)}
                       >
                         Registrate
                       </button>
@@ -225,7 +275,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                         Si ya estas Registrado?
                         <p
                           className="text-blue-500 cursor-pointer hover:underline"
-                          onClick={() => setActiveContent("register")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
+                          // onClick={() => setActiveContent("login")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
                         >
                           Login
                         </p>

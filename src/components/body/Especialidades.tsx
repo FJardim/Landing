@@ -45,8 +45,10 @@ export default function Especialidades({ title }: { title: string }) {
         <h1 className="lg:text-6xl text-4xl font-bold lg:mb-20 mb-8 mt-6 ">
           {title}
         </h1>
-        <div className="bg-main pb-6 pl-6 ">
-          <Image src={imagen} alt="imagen" width={480} height={400} />
+        <div className="w-full flex lg:ml-8">
+          <div className="bg-main pb-6 pl-6">
+            <Image src={imagen} alt="imagen" width={480} height={400} />
+          </div>
         </div>
       </div>
       <div className="w-full md:w-1/2 flex flex-wrap lg:p-6 ">

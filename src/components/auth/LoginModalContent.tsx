@@ -1,22 +1,38 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const LoginModalContent = ({ onRegisterPress }: { onRegisterPress: any }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [registroVisible, setRegistroVisible] = useState(false); // Estado para controlar la visibilidad del componente Registro
 
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
+  //Consumir API con AXIOS
+  const url = "http://localhost:3000/auth/login";
 
-  const handleLogin = () => {
-    // Aquí puedes realizar la lógica de inicio de sesión con los valores de username y password
-    console.log("Username:", username);
-    console.log("Password:", password);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLogin = async (
+    event: React.ChangeEvent<HTMLInputElement> | null = null
+  ) => {
+    if (event) {
+      event.preventDefault();
+    }
+    try {
+      const response = await axios.post(url, formData);
+      console.log("Response:", response.data);
+    } catch (error) {
+      // Aquí puedes manejar los errores de la solicitud
+      console.error("Error:", error);
+    }
   };
 
   // Nueva función para abrir el modal de RegistroModal
@@ -53,8 +69,8 @@ const LoginModalContent = ({ onRegisterPress }: { onRegisterPress: any }) => {
                       id="email"
                       className="px-4 py-2 w-full border rounded-lg"
                       placeholder="Usuario"
-                      value={username}
-                      onChange={handleUsernameChange}
+                      value={formData.email}
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className="w-full mb-4">
@@ -66,13 +82,13 @@ const LoginModalContent = ({ onRegisterPress }: { onRegisterPress: any }) => {
                       id="password"
                       className="px-4 py-2 w-full border rounded-lg"
                       placeholder="Contraseña"
-                      value={password}
-                      onChange={handlePasswordChange}
+                      value={formData.password}
+                      onChange={handleInputChange}
                     />
                   </div>
                   <button
                     className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 w-full rounded-lg"
-                    onClick={handleLogin}
+                    onClick={() => handleLogin(null)} // Usar una función anónima para llamar a handleLogin
                   >
                     Iniciar sesión
                   </button>
