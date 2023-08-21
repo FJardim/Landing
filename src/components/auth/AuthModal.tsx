@@ -11,12 +11,24 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
   const [activeContent, setActiveContent] = useState("login");
   const [registroVisible, setRegistroVisible] = useState(false); // Estado para controlar la visibilidad del componente Registro
 
-  //API
+  //API formdataLogin  para el inicio de sesion
   const [formDataLogin, setFormDataLogin] = useState({
     email: "",
     password: "",
   });
 
+  //API fornDataRegistre para el registro de sesion
+  const [formDataRegistre, setFormDataRegistre] = useState({
+    email: "",
+    password: "",
+    userName: "",
+    name: "",
+    address: "",
+    phone: "",
+    mobile_phone: "",
+    role: "usuario",
+    status_approved: "0",
+  });
   if (!visible) return null;
 
   //-----------------------------------------------
@@ -43,7 +55,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
     }
     try {
       const response = await axios.post(url, formDataLogin); //petion post
-      console.log("Response:", response.data);
+      // console.log("Response:", response.data);
       return response;
     } catch (error: any) {
       //asignación de message
@@ -83,6 +95,72 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
     onClose?.();
   };
 
+  //-----------------------------------------------
+  //Consumir API con AXIOS PARA REGISTRE DE SESION
+  //-----------------------------------------------
+  const handleInputChangeregistre = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormDataRegistre((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    // console.log(formDataRegistre);
+  };
+  const handleRegistration = async (
+    event: React.ChangeEvent<HTMLInputElement> | null = null
+  ) => {
+    if (event) {
+      event.preventDefault();
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/auth/register",
+        formDataRegistre
+      );
+      console.log("Response:", response.data);
+      // Registro exitoso
+      Swal.fire({
+        icon: "success",
+        title: "Registro exitoso",
+        text: "Tu cuenta ha sido registrada con éxito. Ahora tienes que esperar que el administrador apruebe tu registro para su inicio de sesión.",
+      });
+
+      // Cerrar el modal después de un registro exitoso
+      return onClose?.();
+    } catch (error: any) {
+      let errormsg = " ";
+
+      //verificar si el correo ya existe en la base de datos
+      // console.log(error.response);
+
+      if (error.response.data.message === "user alredy exists") {
+        errormsg = "Usuario ya registrado.";
+      }
+
+      // Manejar errores en caso de falla en el registro
+      Swal.fire({
+        icon: "error",
+        title: "Error de registro",
+        text: "Cuenta ya registrada.",
+      });
+
+      // Restablecer las campos de inicio de sesión
+      setFormDataRegistre((prevData) => ({
+        ...prevData,
+        email: "",
+        password: "",
+        userName: "",
+        name: "",
+        address: "",
+        phone: "",
+        mobile_phone: "",
+      }));
+    }
+  };
+  //-----------------------------------------------
+
   return (
     <>
       {activeContent === "login" && (
@@ -103,7 +181,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                   <div className="flex flex-col items-center">
                     <div className="w-full mb-4">
                       <label htmlFor="email" className="text-md ml-2">
-                        Email
+                        Correo Electrónico
                       </label>
                       <input
                         type="text"
@@ -117,13 +195,13 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                     </div>
                     <div className="w-full mb-4">
                       <label htmlFor="password" className="text-md ml-2">
-                        Password
+                        Contraseña
                       </label>
                       <input
                         type="password"
                         id="password"
                         className="px-4 py-2 w-full border rounded-lg"
-                        placeholder="Contraseña"
+                        placeholder="********"
                         name="password"
                         value={formDataLogin.password}
                         onChange={handleInputChangeLogin}
@@ -142,7 +220,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                       No eres miembro todavía?
                       <p
                         className="text-blue-500 cursor-pointer hover:underline"
-                        // onClick={() => setActiveContent("registre")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
+                        onClick={() => setActiveContent("registre")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
                       >
                         Registrate
                       </p>
@@ -155,14 +233,14 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
         </div>
       )}
 
-      {activeContent === "register" && (
+      {activeContent === "registre" && (
         <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
           <div className="w-[800px] flex flex-col">
             <div className="relative">
               <div className="bg-white rounded-xl ">
                 <button
                   className="absolute top-0 right-0 text-black text-xl mr-4 mt-4 hover:text-white hover:bg-blue-300 rounded-full p-2"
-                  // onClick={handleCloseModal}
+                  onClick={handleCloseModal}
                 >
                   X
                 </button>
@@ -174,28 +252,30 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                     <div className="flex flex-wrap w-full">
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
                         <label htmlFor="email" className="text-md ml-2">
-                          Email
+                          Correo Electrónico
                         </label>
                         <input
                           type="text"
                           id="email"
                           className="px-4 py-2 w-full border rounded-lg"
-                          placeholder="Email"
-                          // value={formDataRegistre.email}
-                          // onChange={handleInputChangeRegistre}
+                          placeholder="Usuario"
+                          name="email"
+                          value={formDataRegistre.email}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pl-2">
                         <label htmlFor="password" className="text-md ml-2">
-                          Password
+                          Contraseña
                         </label>
                         <input
                           type="password"
                           id="password"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Contraseña"
-                          // value={formDataRegistre.password}
-                          // onChange={handleInputChangeRegistre}
+                          name="password"
+                          value={formDataRegistre.password}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -207,8 +287,9 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="userName"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="UserName"
-                          // value={formDataRegistre.email}
-                          // onChange={handleInputChangeRegistre}
+                          name="userName"
+                          value={formDataRegistre.userName}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -220,8 +301,9 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="nombre"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Nombre"
-                          // value={formDataRegistre.name}
-                          // onChange={handleInputChangeRegistre}
+                          name="name"
+                          value={formDataRegistre.name}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <div className="w-full md:w-full mb-4 md:pr-2">
@@ -233,8 +315,9 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           id="direccion"
                           className="px-4 py-2 w-full border rounded-lg"
                           placeholder="Dirección"
-                          // value={formDataRegistre.address}
-                          // onChange={handleInputChangeRegistre}
+                          name="address"
+                          value={formDataRegistre.address}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -245,9 +328,10 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           type="text"
                           id="telefonoLocal"
                           className="px-4 py-2 w-full border rounded-lg"
-                          placeholder="Telefono local"
-                          // value={formDataRegistre.phone}
-                          // onChange={handleInputChangeRegistre}
+                          placeholder="+xxxxxxxxxxxx"
+                          name="phone"
+                          value={formDataRegistre.phone}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <div className="w-full md:w-1/2 mb-4 md:pr-2">
@@ -258,14 +342,15 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                           type="text"
                           id="telefonoMovil"
                           className="px-4 py-2 w-full border rounded-lg"
-                          placeholder="Telefono Movil"
-                          // value={formDataRegistre.mobile_phone}
-                          // onChange={handleInputChangeRegistre}
+                          placeholder="+xxxxxxxxxxxx"
+                          name="mobile_phone"
+                          value={formDataRegistre.mobile_phone}
+                          onChange={handleInputChangeregistre}
                         />
                       </div>
                       <button
                         className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 w-full rounded-lg"
-                        // onClick={() => handleLogin(null)}
+                        onClick={() => handleRegistration(null)}
                       >
                         Registrate
                       </button>
@@ -275,7 +360,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                         Si ya estas Registrado?
                         <p
                           className="text-blue-500 cursor-pointer hover:underline"
-                          // onClick={() => setActiveContent("login")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
+                          onClick={() => setActiveContent("login")} // Hacer clic en "Registrate" para mostrar el componente RegistroModal
                         >
                           Login
                         </p>
