@@ -10,3 +10,60 @@ body {
 button {
   color: #cba557;
 }
+
+.react-datepicker__day {
+  @apply inline-flex justify-center items-center w-14 h-14 text-lg !important;
+}
+
+.react-datepicker__day:hover {
+  /* @apply bg- */
+}
+
+.react-datepicker__day--disabled,
+.react-datepicker__day--disabled:hover {
+  @apply bg-red-500 text-white rounded-md !important;
+}
+
+.react-datepicker {
+  width: 460px;
+  height: 430px;
+  border-top-left-radius: 1rem; /* Ajusta el tamaño de fuente según tus preferencias */
+  overflow: hidden;
+  /* Otros estilos personalizados */
+}
+.react-datepicker__navigation {
+  top: 10px !important;
+  height: 52px !important;
+  width: 52px !important;
+}
+.react-datepicker__header {
+  width: 458px !important;
+  height: 110px !important;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.5rem !important;
+  margin: 6px !important;
+}
+
+.react-datepicker__day-names {
+  /* width: 3.5rem; */
+  line-height: 3.5rem !important;
+}
+.react-datepicker__day-name {
+  width: 3.5rem !important;
+  font-size: 15px !important;
+}
+
+.react-datepicker__month {
+  height: 327px;
+  width: 445px;
+}
+.react-datepicker__navigation,
+.react-datepicker__navigation--next {
+}
+
+.react-datepicker__month-container {
+  width: 458px !important;
+  height: 430px !important;
+}

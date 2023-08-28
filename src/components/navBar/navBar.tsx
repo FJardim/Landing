@@ -6,8 +6,10 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
 import AuthModal from "../auth/AuthModal";
+import { useAuth } from "@/components/context/AuthContext";
 
 export const NavBar = () => {
+  const { isAuthenticated, user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -108,14 +110,28 @@ export const NavBar = () => {
           </div>
         )}
         <div className="flex">
-          <button
-            className="flex items-center text-white mx-2 bg-main hover:text-black px-4 py-1 rounded-2xl"
-            onClick={handleOpenLoginModal}
-          >
-            <FaUserCircle className="m-1" />
-            Login
-          </button>
-          {/* Call: +SOY el numero de ADRIAN */}
+          {isAuthenticated ? (
+            <>
+              <button className="flex items-center text-white mx-2 bg-main hover:text-black px-4 py-1 rounded-2xl">
+                <FaUserCircle className="m-1" />
+                {user?.userName}
+              </button>
+              <button
+                className="text-white mx-2 bg-red-500 hover:bg-red-600 px-4 py-1 rounded-2xl"
+                onClick={logout}
+              >
+                Cerrar sesión
+              </button>
+            </>
+          ) : (
+            <button
+              className="flex items-center text-white mx-2 bg-main hover:text-black px-4 py-1 rounded-2xl"
+              onClick={handleOpenLoginModal}
+            >
+              <FaUserCircle className="m-1" />
+              Login
+            </button>
+          )}
         </div>
       </div>
       <AuthModal visible={modalOpen} onClose={() => setModalOpen(false)} />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useAuth } from "@/components/context/AuthContext";
 
 type ModalProps = {
   visible: boolean;
@@ -8,6 +9,7 @@ type ModalProps = {
 };
 
 export default function AuthModal({ visible, onClose }: ModalProps) {
+  const { login } = useAuth();
   const [activeContent, setActiveContent] = useState("login");
   const [registroVisible, setRegistroVisible] = useState(false); // Estado para controlar la visibilidad del componente Registro
 
@@ -29,6 +31,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
     role: "usuario",
     status_approved: "0",
   });
+
   if (!visible) return null;
 
   //-----------------------------------------------
@@ -47,16 +50,13 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
     }));
     console.log(formDataLogin);
   };
-  const handleLogin = async (
-    event: React.ChangeEvent<HTMLInputElement> | null = null
-  ) => {
-    if (event) {
-      event.preventDefault();
-    }
+  const handleLogin = async () => {
     try {
-      const response = await axios.post(url, formDataLogin); //petion post
-      // console.log("Response:", response.data);
-      return response;
+      const { data } = await axios.post(url, formDataLogin); //petion post
+
+      login({ user: data.user, token: data.access_token });
+
+      onClose();
     } catch (error: any) {
       //asignación de message
       let errorMessage = " ";
@@ -209,7 +209,7 @@ export default function AuthModal({ visible, onClose }: ModalProps) {
                     </div>
                     <button
                       className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 w-full rounded-lg"
-                      onClick={() => handleLogin(null)}
+                      onClick={handleLogin}
                     >
                       Iniciar sesión
                     </button>
