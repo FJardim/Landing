@@ -6,6 +6,7 @@ import portada from "../assets/image/portadaDos.jpg";
 import axios from "axios";
 import { format, getDate, parse } from "date-fns";
 import { useRouter } from "next/router";
+import { useAuth } from "../context/AuthContext";
 
 const checkAppointmentAvailability = async (date: Date) => {
   const { data } = await axios.post<
@@ -31,10 +32,11 @@ const getAvailabletimes = async (date: string) => {
 export default function Citas() {
   //obtener el queryString citas?documentId=1
   const router = useRouter();
-  console.log(router.query);
+  const documentId = router.query.documentId as string;
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [excludedDates, setExcludedDates] = useState<Date[]>([]);
   const [times, setTimes] = useState<string[]>([]);
+
   const [documentName, setDocumentName] = useState<{
     name: string;
     tipoDocuments: string;
@@ -44,9 +46,9 @@ export default function Citas() {
     tipoDocuments: "",
     fileSetting: "",
   });
-
+  const [selectedTime, setSelectedTime] = useState<string>("");
+  const { token, user } = useAuth();
   const excludedDatesDaysOfMonth = excludedDates.map(getDate);
-
   const minDate = new Date();
   const formattedSelectedDate = selectedDate
     ? format(selectedDate, "yyyy-MM-dd")
@@ -76,16 +78,57 @@ export default function Citas() {
       console.error("Error al hacer la petición:", error);
     }
   };
+  //citas
+  const [dataCitas, setDataCitas] = useState<{
+    name_doc: string;
+    appointment_date: string;
+    appointment_time: string;
+    documents_id: string;
+    user_id: string;
+    imagen: File | null;
+  }>({
+    name_doc: "",
+    appointment_date: "",
+    appointment_time: "",
+    documents_id: "",
+    user_id: "",
+    imagen: null,
+  });
 
-  //agregaruna cita
-  const addAppointment = async (data) => {
+  //agregar una cita
+  const addAppointment = async () => {
+    const formData = new FormData();
+
+    if (
+      formattedSelectedDate &&
+      selectedTime &&
+      documentName.name &&
+      dataCitas.imagen
+    ) {
+      formData.append("name_doc", "");
+      formData.append("appointment_date", formattedSelectedDate);
+      formData.append("appointment_time", selectedTime);
+      formData.append("documents_id", documentId);
+      formData.append("user_id", user?.id.toString() ?? "");
+      formData.append("file", dataCitas.imagen);
+    } else {
+      return alert("Seleccione una fecha, hora, documento y archivo válidos.");
+    }
+
     try {
       const response = await axios.post(
         "http://localhost:3000/appointment",
-        data
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
+      console.log(dataCitas);
       console.log("Cita agregada:", response.data);
-      // Puedes hacer más acciones después de agregar la cita si es necesario
+      console.log(response);
     } catch (error) {
       console.error("Error al agregar la cita:", error);
     }
@@ -104,7 +147,6 @@ export default function Citas() {
   useEffect(() => {
     if (router.query.documentId) {
       const documentId = parseInt(router.query.documentId as string); // Convertir a número
-      // console.log(documentId);
       getDocumentsId(documentId);
     }
   }, [router.query.documentId]);
@@ -160,7 +202,11 @@ export default function Citas() {
               </div>
               <div className="px-6 m-4">
                 <p className="mb-4 text-lg font-semibold">Hora de la Cita:</p>
-                <select className="w-72 p-2 border-2 border-gray-400 rounded-md">
+                <select
+                  className="w-72 p-2 border-2 border-gray-400 rounded-md"
+                  value={selectedTime}
+                  onChange={(e) => setSelectedTime(e.target.value)}
+                >
                   <option value={""}>Selecciona un horario</option>
                   {times.map((time) => (
                     <option value={time} key={time}>
@@ -182,10 +228,21 @@ export default function Citas() {
                   id="fileInput"
                   name="fileInput"
                   className="w-full"
+                  onChange={(e) => {
+                    if (e.target?.files?.[0]) {
+                      setDataCitas({
+                        ...dataCitas,
+                        imagen: e.target?.files?.[0],
+                      });
+                    }
+                  }}
                 />
               </div>
               <div className="text-center p-6">
-                <button className="bg-main text-white text-xl py-2 px-20 rounded-lg ">
+                <button
+                  className="bg-main text-white text-xl py-2 px-20 rounded-lg"
+                  onClick={addAppointment}
+                >
                   Agregar Cita
                 </button>
               </div>
