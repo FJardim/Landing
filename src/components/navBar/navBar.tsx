@@ -7,11 +7,14 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
 import AuthModal from "../auth/AuthModal";
 import { useAuth } from "@/components/context/AuthContext";
+import { useRouter } from "next/router";
 
 export const NavBar = () => {
+  const router = useRouter();
+  const showLogin = router.query.login ? true : false;
   const { isAuthenticated, user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(showLogin);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
