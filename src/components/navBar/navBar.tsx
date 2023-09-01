@@ -11,10 +11,10 @@ import { useRouter } from "next/router";
 
 export const NavBar = () => {
   const router = useRouter();
-  const showLogin = router.query.login ? true : false;
+  const showLogin = router.query.login ? true : false; //bloqueo
   const { isAuthenticated, user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(showLogin);
+  const [modalOpen, setModalOpen] = useState(showLogin); //bloqueo
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
